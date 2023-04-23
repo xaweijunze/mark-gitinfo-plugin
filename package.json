@@ -1,0 +1,20 @@
+{
+  "name": "mark-gitinfo-plugin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "weijunze xaweijunze@163.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xaweijunze/mark-gitinfo-plugin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/my-webpack-plugin/issues"
+  },
+  "homepage": "https://github.com/your-username/my-webpack-plugin#readme",
+ 
+  "license": "ISC"
+}
