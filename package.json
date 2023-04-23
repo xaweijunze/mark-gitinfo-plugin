@@ -1,6 +1,6 @@
 {
   "name": "mark-gitinfo-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -12,9 +12,9 @@
     "url": "git+https://github.com/xaweijunze/mark-gitinfo-plugin.git"
   },
   "bugs": {
-    "url": "https://github.com/your-username/my-webpack-plugin/issues"
+    "url": "https://github.com/xaweijunze/mark-gitinfo-plugin/issues"
   },
-  "homepage": "https://github.com/your-username/my-webpack-plugin#readme",
+  "homepage": "https://github.com/xaweijunze/mark-gitinfo-plugin#readme",
  
   "license": "ISC"
 }
