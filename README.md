@@ -4,19 +4,17 @@
 3. 在webpackConfig 的plugins 中插入 new MarkGitinfoPlugin()
 -  例如：在CRA项目中的 config-overrides.js 文件中
 ```Javascript 
-const path = require('path')
-const MarkGitinfoPlugin = require('Mark-gitinfo-plugin')
+const MarkGitinfoPlugin = require('mark-gitinfo-plugin')
 
-module.exports = function override(config) {
-  const isProduction = config.mode === 'production'
-  if (isProduction) {
-    pushPlugins()
-  }
-  return config
+module.exports = function override(config){
+    if(config.mode === 'production'){
+        setPlugins()
+    }
+    return config
 
-  function pushPlugins(){
-    config.plugins.push(new MarkGitinfoPlugin())
-  }
+    function setPlugins(){
+        config.plugins.push(new MarkGitinfoPlugin())
+    }
 }
 ```
 # 效果
