@@ -1,6 +1,6 @@
 # 使用方法
 1. ·npm i mark-gitinfo-plugin
-2. 在webpackConfig 中引用  const MarkGitinfoPlugin = require('Mark-gitinfo-plugin')
+2. 在webpackConfig 中引用  const MarkGitinfoPlugin = require('mark-gitinfo-plugin')
 3. 在webpackConfig 的plugins 中插入 new MarkGitinfoPlugin()
 -  例如：在CRA项目中的 config-overrides.js 文件中
 ```Javascript 
@@ -23,6 +23,6 @@ module.exports = function override(config){
   Project Remote: app-base
   Project Branch: master
   Commit Hash: 7413fa2
-  Commit Date: Sat Apr 22 2023 22:34:49 GMT+0800 (中国标准时间)
-  Build Date: Sun Apr 23 2023 22:56:59 GMT+0800 (中国标准时间) 
+  Commit Date: 2023-05-22 22:34:49
+  Build Date: 2023-05-22 22:56:59
 ```

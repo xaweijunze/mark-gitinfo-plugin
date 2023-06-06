@@ -1,5 +1,6 @@
 const fs = require('fs');
 const { execSync } = require('child_process');
+const { formatDateTime } = require('./utils/format');
 
 class MarkGitinfoPlugin {
   constructor(options) {
@@ -36,11 +37,14 @@ class MarkGitinfoPlugin {
         const lastCommitDate = new Date(lastCommitTime * 1000);
         // 获取打包时服务器时间
         const buildDate = new Date();
+        // 日期转换
+        const lastCommitDateStr = formatDateTime(lastCommitDate);
+        const buildDateStr = formatDateTime(buildDate);
         gitinfo = `Project Remote: ${remote}\n`+
                   `Project Branch: ${branch}\n`+
                   `Last Commit Hash: ${hash}\n`+
-                  `Last Commit Date: ${lastCommitDate}\n`+
-                  `Build Date: ${buildDate}\n`;
+                  `Last Commit Date: ${lastCommitDateStr}\n`+
+                  `Build Date: ${buildDateStr}\n`;
       }
     catch(error){
       console.log(error)
