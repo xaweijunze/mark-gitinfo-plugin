@@ -20,6 +20,7 @@ module.exports = function override(config){
 # 效果
 在build中生成verson.txt文件,生成如下信息
 ```
+  Project Name: app-base
   Project Remote: app-base
   Project Branch: master
   Commit Hash: 7413fa2
