@@ -1,7 +1,7 @@
 # 使用方法
-1. ·npm i mark-gitinfo-plugin
-2. 在webpackConfig 中引用  const MarkGitinfoPlugin = require('mark-gitinfo-plugin')
-3. 在webpackConfig 的plugins 中插入 new MarkGitinfoPlugin()
+1. `npm i mark-gitinfo-plugin` or `yarn add mark-gitinfo-plugin`
+2. 在 webpackConfig 中引用  `const MarkGitinfoPlugin = require('mark-gitinfo-plugin')`
+3. 在 webpackConfig 的plugins 中插入 `new MarkGitinfoPlugin()`
 -  例如：在CRA项目中的 config-overrides.js 文件中
 ```Javascript 
 const MarkGitinfoPlugin = require('mark-gitinfo-plugin')

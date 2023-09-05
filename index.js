@@ -66,7 +66,7 @@ class MarkGitinfoPlugin {
       gitinfo = gitinfo + `Last Commit Hash: ${hash}\n`;
     } catch (error) {
       console.log(error);
-      gitinfo = gitinfo + `Last Commit Hash:获取最近提交失败！\n`;
+      gitinfo = gitinfo + `Last Commit Hash: 获取最近提交失败！\n`;
     }
 
     try {
@@ -80,7 +80,7 @@ class MarkGitinfoPlugin {
       gitinfo = gitinfo + `Last Commit Date: ${lastCommitDateStr}\n`;
     } catch (error) {
       console.log(error);
-      gitinfo = gitinfo + `Last Commit Date:获取最近提交时间失败！\n`;
+      gitinfo = gitinfo + `Last Commit Date: 获取最近提交时间失败！\n`;
     }
 
     try {
@@ -88,10 +88,10 @@ class MarkGitinfoPlugin {
       const buildDate = new Date();
       // 日期转换
       const buildDateStr = formatDateTime(buildDate);
-      gitinfo = gitinfo + `Last Commit Date: ${buildDateStr}\n`;
+      gitinfo = gitinfo + `Build Date: ${buildDateStr}\n`;
     } catch (error) {
       console.log(error);
-      gitinfo = gitinfo + `Last Commit Date:获取打包时间失败！\n`;
+      gitinfo = gitinfo + `Build Date:获取打包时间失败！\n`;
     }
     return gitinfo;
   }
