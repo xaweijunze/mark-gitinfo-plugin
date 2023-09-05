@@ -27,7 +27,7 @@ class MarkGitinfoPlugin {
       // 获取当前脚本文件所在的目录
       const scriptDirectory = __dirname;
       // 获取当前目录的父级目录
-      const parentDirectory = path.basename(path.dirname(scriptDirectory));
+      const parentDirectory = path.basename(scriptDirectory);
       gitinfo = gitinfo + `Project name: ${parentDirectory}\n`;
     } catch (error) {
       console.log(error);
