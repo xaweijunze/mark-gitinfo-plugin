@@ -11,9 +11,15 @@ class MarkGitinfoPlugin {
   apply(compiler) {
     compiler.hooks.done.tapAsync("MarkGitinfoPlugin", (stats, callback) => {
       const gitInfo = this.getGitInfo();
-      const filePath = `${stats.compilation.outputOptions.path}/verson.txt`;
+      const filePath = `${stats.compilation.outputOptions.path}/version.js`;
+      const { version_info_name = "__version_info__" } = this.options || {};
+      const versionJsContent = `${version_info_name} = ${JSON.stringify(
+        gitInfo,
+        null,
+        2
+      )};\n`;
 
-      fs.writeFile(filePath, gitInfo, (err) => {
+      fs.writeFile(filePath, versionJsContent, (err) => {
         if (err) throw err;
         console.log(`Git info written to ${filePath}`);
         callback();
@@ -22,7 +28,7 @@ class MarkGitinfoPlugin {
   }
 
   getGitInfo() {
-    let gitinfo = "";
+    let gitinfo = {};
     try {
       // 获取当前脚本文件所在的目录
       const scriptDirectory = __dirname;
@@ -30,10 +36,10 @@ class MarkGitinfoPlugin {
       const parentDirectory = path.basename(
         path.dirname(path.dirname(scriptDirectory))
       );
-      gitinfo = gitinfo + `Project Name: ${parentDirectory}\n`;
+      gitinfo["Project Name"] = parentDirectory;
     } catch (error) {
       console.log(error);
-      gitinfo = gitinfo + "Project name: 获取项目名称失败！\n";
+      gitinfo["Project Name"] = "获取项目名称失败！";
     }
 
     try {
@@ -43,10 +49,10 @@ class MarkGitinfoPlugin {
         .trim();
       const match = remoteUrl.match(/\/([^/]+)\.git$/);
       const remote = match ? match[1] : "";
-      gitinfo = gitinfo + `Project Remote: ${remote}\n`;
+      gitinfo["Project Remote"] = remote;
     } catch (error) {
       console.log(error);
-      gitinfo = gitinfo + "Project Remote: 获取仓库名称失败！\n";
+      gitinfo["Project Remote"] = "获取仓库名称失败！";
     }
 
     try {
@@ -54,19 +60,19 @@ class MarkGitinfoPlugin {
       const branch = execSync("git rev-parse --abbrev-ref HEAD")
         .toString()
         .trim();
-      gitinfo = gitinfo + `Project Branch: ${branch}\n`;
+      gitinfo["Project Branch"] = branch;
     } catch (error) {
       console.log(error);
-      gitinfo = gitinfo + `Project Branch: 获取版本失败！\n`;
+      gitinfo["Project Branch"] = "获取版本失败！";
     }
 
     try {
       // 获取最近提交hash值
       const hash = execSync("git rev-parse --short HEAD").toString().trim();
-      gitinfo = gitinfo + `Last Commit Hash: ${hash}\n`;
+      gitinfo["Last Commit Hash"] = hash;
     } catch (error) {
       console.log(error);
-      gitinfo = gitinfo + `Last Commit Hash: 获取最近提交失败！\n`;
+      gitinfo["Last Commit Hash"] = "获取最近提交失败！";
     }
 
     try {
@@ -77,10 +83,10 @@ class MarkGitinfoPlugin {
       );
       const lastCommitDate = new Date(lastCommitTime * 1000);
       const lastCommitDateStr = formatDateTime(lastCommitDate);
-      gitinfo = gitinfo + `Last Commit Date: ${lastCommitDateStr}\n`;
+      gitinfo["Last Commit Date"] = lastCommitDateStr;
     } catch (error) {
       console.log(error);
-      gitinfo = gitinfo + `Last Commit Date: 获取最近提交时间失败！\n`;
+      gitinfo["Last Commit Date"] = "获取最近提交时间失败！";
     }
 
     try {
@@ -88,10 +94,10 @@ class MarkGitinfoPlugin {
       const buildDate = new Date();
       // 日期转换
       const buildDateStr = formatDateTime(buildDate);
-      gitinfo = gitinfo + `Build Date: ${buildDateStr}\n`;
+      gitinfo["Build Date"] = buildDateStr;
     } catch (error) {
       console.log(error);
-      gitinfo = gitinfo + `Build Date:获取打包时间失败！\n`;
+      gitinfo["Build Date"] = "获取打包时间失败！";
     }
     return gitinfo;
   }
